@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.szxb.buspay.BusApp;
 import com.szxb.buspay.db.manager.DBManager;
-import com.szxb.buspay.db.sp.FetchAppConfig;
 import com.szxb.buspay.entity.PosRecord;
 import com.szxb.buspay.util.sign.ParamSingUtil;
 
@@ -85,7 +84,7 @@ public class ParamsUtil {
      */
     public static Map<String, Object> getkeyMap() {
         String timestamp = DateUtil.getCurrentDate();
-        String app_id = FetchAppConfig.appId();
+        String app_id = BusApp.getPosManager().getAppId();
         Map<String, Object> map = commonMap(app_id, timestamp);
         map.put("sign", ParamSingUtil.getSign(app_id, timestamp, null, Config.private_key));
         map.put("biz_data", "");
@@ -98,7 +97,7 @@ public class ParamsUtil {
      */
     public static Map<String, Object> getBlackListMap() {
         String timestamp = DateUtil.getCurrentDate();
-        String app_id = FetchAppConfig.appId();
+        String app_id =BusApp.getPosManager().getAppId();
         Map<String, Object> map = commonMap(app_id, timestamp);
         JSONObject object = new JSONObject();
         object.put("page_index", 1);

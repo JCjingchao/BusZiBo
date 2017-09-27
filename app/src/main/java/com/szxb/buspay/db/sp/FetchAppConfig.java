@@ -63,12 +63,6 @@ public class FetchAppConfig {
         return (Integer) CommonSharedPreferences.get("payticketPrice", 0);
     }
 
-    //获取城市编码
-    public static String cityCode() {
-        return (String) CommonSharedPreferences.get("cityCode", "440300");
-    }
-
-
     //司机卡号
     public static String saveDriver() {
         return (String) CommonSharedPreferences.get("DriverCard", "00000000");

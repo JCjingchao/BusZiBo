@@ -36,7 +36,6 @@ public class LoopScanTask extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
         ThreadScheduledExecutorUtil.getInstance().getService().scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {

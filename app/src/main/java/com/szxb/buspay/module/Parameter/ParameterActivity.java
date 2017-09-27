@@ -110,7 +110,6 @@ public class ParameterActivity extends BaseMVPActivity<ParameterView,ParameterPr
         super.ThreeKey();
         mPresenter.CloseEvent();
         handler.sendMessage(handler.obtainMessage(Constant.SettingFail));
-
     }
 
 
@@ -128,7 +127,6 @@ public class ParameterActivity extends BaseMVPActivity<ParameterView,ParameterPr
         CommonSharedPreferences.put("LineName",lineInfo.getLine());
         CommonSharedPreferences.put("coefficient",lineInfo.getCoefficient());
         handler.sendMessage(handler.obtainMessage(Constant.SettingSuccess));
-
 
     }
 
