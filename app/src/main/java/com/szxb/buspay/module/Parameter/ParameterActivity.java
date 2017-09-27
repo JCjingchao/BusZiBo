@@ -128,10 +128,10 @@ public class ParameterActivity extends BaseMVPActivity<ParameterView,ParameterPr
 
         CommonSharedPreferences.put("coefficient",lineInfo.getCoefficient());
         int money=Integer.parseInt(lineInfo.getFixed_price());
-        BusApp.getPosManager().setPayMarPrice(money);
+        BusApp.getPosManager().setMarkedPrice(money);
         BusApp.getPosManager().setLineName(FetchAppConfig.LineName());
         int coef=Integer.parseInt(FetchAppConfig.coefficient().substring(24,27));
-        BusApp.getPosManager().setMarkedPrice(money*coef/100);
+        BusApp.getPosManager().setPayMarPrice(money*coef/100);
         handler.sendMessage(handler.obtainMessage(Constant.SettingSuccess));
 
     }

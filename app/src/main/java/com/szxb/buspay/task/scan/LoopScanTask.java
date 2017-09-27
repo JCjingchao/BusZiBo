@@ -62,7 +62,7 @@ public class LoopScanTask extends Service {
                 }
 
             }
-        }, 500, 200, TimeUnit.MILLISECONDS);
+        }, 500, 100, TimeUnit.MILLISECONDS);
     }
 
 }

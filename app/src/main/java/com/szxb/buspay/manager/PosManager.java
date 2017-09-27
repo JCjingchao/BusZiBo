@@ -1,6 +1,7 @@
 package com.szxb.buspay.manager;
 
 import android.util.Base64;
+import android.util.Log;
 
 import com.example.zhoukai.modemtooltest.ModemToolTest;
 import com.szxb.buspay.db.manager.DBManager;
@@ -53,15 +54,31 @@ public class PosManager implements IPosManage {
 
     @Override
     public void loadFromPrefs() {
-        lineName = FetchAppConfig.lineName();
-        startStationName = FetchAppConfig.startStationName();
-        endStationName = FetchAppConfig.endStationName();
-        driverNo = ModemToolTest.getItem(7);
-        markedPrice = FetchAppConfig.ticketPrice();
-        paymarkedPrice = FetchAppConfig.payTicketPrice();
-        orderDesc = FetchAppConfig.orderDesc();
-        key = Base64.decode(Config.private_key, Base64.NO_WRAP);
-        bus_no = FetchAppConfig.busNo();
+        try {
+            lineName = FetchAppConfig.lineName();
+            startStationName = FetchAppConfig.startStationName();
+            endStationName = FetchAppConfig.endStationName();
+            driverNo = ModemToolTest.getItem(7);
+
+            markedPrice = Integer.valueOf(FetchAppConfig.fixed_price());
+            int coef = Integer.parseInt(FetchAppConfig.coefficient().substring(24, 27));
+            paymarkedPrice = markedPrice * coef / 100;
+
+            orderDesc = FetchAppConfig.orderDesc();
+            key = Base64.decode(Config.private_key, Base64.NO_WRAP);
+            bus_no = FetchAppConfig.busNo();
+
+            Log.d("PosManager",
+                    "loadFromPrefs(PosManager.java:73)二维码应扣款=" + markedPrice + "");
+
+            Log.d("PosManager",
+                    "loadFromPrefs(PosManager.java:77)二维码实际扣款" + paymarkedPrice + "");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d("PosManager",
+                "loadFromPrefs(PosManager.java:80)"+e.toString());
+        }
     }
 
     @Override

@@ -40,8 +40,6 @@ public class HomeActivity extends BaseMVPActivity<HomeView, HomePresenter> imple
     protected int rootView() {
         return R.layout.view_home;
     }
-
-
     //
     @Override
     protected void initView() {
@@ -93,16 +91,16 @@ public class HomeActivity extends BaseMVPActivity<HomeView, HomePresenter> imple
                                 BusToast.showToast(BusApp.getInstance(), "二维码格式错误", false);
                                 break;
                             case QRCode.EC_CARD_PUBLIC_KEY://卡证书公钥错误
-                                SoundPoolUtil.play(8);
-                                BusToast.showToast(BusApp.getInstance(), "卡证书公钥错误", false);
+                                SoundPoolUtil.play(4);
+                                BusToast.showToast(BusApp.getInstance(), "二维码有误", false);
                                 break;
                             case QRCode.EC_CARD_CERT://卡证书签名错误
-                                SoundPoolUtil.play(9);
-                                BusToast.showToast(BusApp.getInstance(), "卡证书签名错误", false);
+                                SoundPoolUtil.play(4);
+                                BusToast.showToast(BusApp.getInstance(), "二维码有误", false);
                                 break;
                             case QRCode.EC_USER_PUBLIC_KEY://卡证书用户公钥错误
-                                SoundPoolUtil.play(10);
-                                BusToast.showToast(BusApp.getInstance(), "卡证书用户公钥错误", false);
+                                SoundPoolUtil.play(4);
+                                BusToast.showToast(BusApp.getInstance(), "二维码有误", false);
                                 break;
                             case QRCode.EC_USER_SIGN://二维码签名错误
                                 SoundPoolUtil.play(11);
@@ -125,8 +123,8 @@ public class HomeActivity extends BaseMVPActivity<HomeView, HomePresenter> imple
                                 BusToast.showToast(BusApp.getInstance(), "余额不足", false);
                                 break;
                             case QRCode.EC_OPEN_ID://输入的openid不符
-                                SoundPoolUtil.play(16);
-                                BusToast.showToast(BusApp.getInstance(), "输入的openid不符", false);
+                                SoundPoolUtil.play(4);
+                                BusToast.showToast(BusApp.getInstance(), "二维码有误", false);
                                 break;
                             case QRCode.EC_PARAM_ERR://参数错误
                                 SoundPoolUtil.play(17);
@@ -137,20 +135,20 @@ public class HomeActivity extends BaseMVPActivity<HomeView, HomePresenter> imple
                                 BusToast.showToast(BusApp.getInstance(), "申请内存错误", false);
                                 break;
                             case QRCode.EC_CARD_CERT_SIGN_ALG_NOT_SUPPORT://卡证书签名算法不支持
-                                SoundPoolUtil.play(19);
-                                BusToast.showToast(BusApp.getInstance(), "卡证书签名算法不支持", false);
+                                SoundPoolUtil.play(4);
+                                BusToast.showToast(BusApp.getInstance(), "二维码有误", false);
                                 break;
                             case QRCode.EC_MAC_ROOT_KEY_DECRYPT_ERR://加密的mac根密钥解密失败
-                                SoundPoolUtil.play(20);
-                                BusToast.showToast(BusApp.getInstance(), "加密的mac根密钥解密失败", false);
+                                SoundPoolUtil.play(4);
+                                BusToast.showToast(BusApp.getInstance(), "二维码有误", false);
                                 break;
                             case QRCode.EC_MAC_SIGN_ERR://mac校验失败
                                 SoundPoolUtil.play(21);
                                 BusToast.showToast(BusApp.getInstance(), "mac校验失败", false);
                                 break;
                             case QRCode.EC_QRCODE_SIGN_ALG_NOT_SUPPORT://二维码签名算法不支持
-                                SoundPoolUtil.play(22);
-                                BusToast.showToast(BusApp.getInstance(), "二维码签名算法不支持", false);
+                                SoundPoolUtil.play(4);
+                                BusToast.showToast(BusApp.getInstance(), "二维码有误", false);
                                 break;
                             case QRCode.EC_SCAN_RECORD_ECRYPT_ERR://扫码记录加密失败
                                 SoundPoolUtil.play(23);
@@ -186,8 +184,6 @@ public class HomeActivity extends BaseMVPActivity<HomeView, HomePresenter> imple
                     @Override
                     public void call(QRScanMessage qrScanMessage) {
                         if (qrScanMessage == null) return;
-
-
                         Map<String, Object> map = ParamsUtil.requestMap(qrScanMessage.getPosRecord());
                         mPresenter.requestTX(Config.FETCH_DEBIT_WHAT, Config.XBPAY, map);
                     }

@@ -53,10 +53,10 @@ public class InitPresenter extends BasePresenter<InitView> {
     void intit() {
         Log.d("home","1");
         String init=FetchAppConfig.init();
-        if (!"5".equals(init) ){
+        if (!"1".equals(init) ){
             AssetManager ass = BusApp.getInstance().getAssets();
-            libszxb.ymodemUpdate(ass, "Q6_K2120170924204720.bin");
-            CommonSharedPreferences.put("init", "5");
+            libszxb.ymodemUpdate(ass, "Q6_K21_170927121230.bin");
+            CommonSharedPreferences.put("init", "1");
         }
         Log.d("home","2"+init);
 

@@ -45,7 +45,7 @@ public class FetchAppConfig {
 
     //备注
     public static String orderDesc() {
-        return (String) CommonSharedPreferences.get("orderDesc", "淄博公交7");
+        return (String) CommonSharedPreferences.get("orderDesc", "淄博公交");
     }
 
     //获取状态

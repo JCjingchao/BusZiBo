@@ -1,7 +1,5 @@
 package com.szxb.buspay.module.home;
 
-import android.content.Loader;
-import android.content.res.AssetManager;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSONArray;
@@ -11,15 +9,13 @@ import com.szxb.buspay.base.BaseModel;
 import com.szxb.buspay.base.BasePresenter;
 import com.szxb.buspay.db.dao.ScanInfoEntityDao;
 import com.szxb.buspay.db.manager.DBCore;
-import com.szxb.buspay.db.sp.CommonSharedPreferences;
 import com.szxb.buspay.db.sp.FetchAppConfig;
 import com.szxb.buspay.entity.ScanInfoEntity;
 import com.szxb.buspay.interfaces.OnPushTask;
 import com.szxb.buspay.task.CardPay;
 import com.szxb.buspay.task.KeyListenerTask;
-import com.szxb.buspay.task.LoadingData;
 import com.szxb.buspay.task.TimeTask;
-import com.szxb.jni.libszxb;
+import com.szxb.buspay.util.Utils;
 import com.szxb.xblog.XBLog;
 
 import java.text.DecimalFormat;
@@ -54,17 +50,17 @@ public class HomePresenter extends BasePresenter<HomeView> {
             homeModel.UpdataConfig(Line);
             homeView.SetText(FetchAppConfig.LineName() + "        " + FetchAppConfig.chinese_name());
             int money = Integer.parseInt(FetchAppConfig.fixed_price());
-            BusApp.getPosManager().setPayMarPrice(money);
+            BusApp.getPosManager().setMarkedPrice(money);
             BusApp.getPosManager().setLineName(FetchAppConfig.LineName());
             int coef=Integer.parseInt(FetchAppConfig.coefficient().substring(24,27));
-            BusApp.getPosManager().setMarkedPrice(money*coef/100);
+            BusApp.getPosManager().setPayMarPrice(money*coef/100);
             String coedd= FetchAppConfig.coefficient();
             Log.d("init",coedd+"---");
             int coeff=Integer.parseInt(coedd.substring(0,3));
             DecimalFormat df= new DecimalFormat("######0.00");
             double moneyf = money / 100.00*coeff/100;
             String code=df.format(moneyf);
-            homeView.SetPrice(code + "");
+            homeView.SetPrice(Utils.fen2Yuan(money));
             OnlineEvent(onPushTask);
             CardEvent(onPushTask);
             OnTime(onPushTask);
