@@ -46,7 +46,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
     //加载参数 有开始消费 无进入线路选择
     void init(OnPushTask onPushTask) {
 
-        CommonSharedPreferences.put("init", libszxb.getVersion());
+       // CommonSharedPreferences.put("init", libszxb.getVersion());
         String Line = FetchAppConfig.FristNo();
         XBLog.d("init(HomePresenter.java:41)" + Line);
         if (Line != null && !Line.equals("")) {

@@ -51,11 +51,15 @@ public class InitPresenter extends BasePresenter<InitView> {
 
     //固件和K21
     void intit() {
-        if (!"5".equals(FetchAppConfig.init())) {
+        Log.d("home","1");
+        String init=FetchAppConfig.init();
+        if (!"5".equals(init) ){
             AssetManager ass = BusApp.getInstance().getAssets();
-            libszxb.ymodemUpdate(ass, "Q6_K21_170926102410.bin");
+            libszxb.ymodemUpdate(ass, "Q6_K2120170924204720.bin");
             CommonSharedPreferences.put("init", "5");
         }
+        Log.d("home","2"+init);
+
         SetK21Time();
     }
 
