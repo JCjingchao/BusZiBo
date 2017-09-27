@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/list_view"
+    >
+    <TextView
+ android:layout_marginLeft="40dp"
+        android:id="@+id/card_id"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="23sp"
+        android:text="卡号"
+        android:textColor="#000000"
+        />
+    <TextView
+        android:layout_marginLeft="65dp"
+        android:layout_gravity="center"
+        android:id="@+id/card_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="余额"
+        android:textSize="23sp"
+        android:gravity="center"
+        android:textColor="#000000"
+        />
+    <TextView
+        android:layout_marginLeft="45dp"
+        android:layout_gravity="center"
+        android:id="@+id/pay_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:text="支付金额"
+        />
+    <TextView
+        android:layout_marginLeft="65dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/time"
+        android:text="交易时间"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:textColor="#000000"
+        />
+</LinearLayout>
+
+    <ListView
+        android:id="@+id/list_record"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+</LinearLayout>

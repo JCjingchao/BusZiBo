@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="10dp"
+    android:orientation="vertical"
+>
+   <TextView
+       android:layout_marginTop="50dp"
+       android:id="@+id/bus"
+       android:layout_width="200dp"
+       android:layout_height="wrap_content"
+       android:text="车号设置"
+       android:gravity="center"
+       android:textSize="46sp"
+       />
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="horizontal"
+       android:gravity="center"
+       >
+   <TextView
+        android:id="@+id/number1"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:gravity="center"
+        android:textSize="46sp"
+     />
+
+   <TextView
+       android:id="@+id/number2"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:layout_height="wrap_content"
+       android:text="0"
+       android:gravity="center"
+       android:textSize="34sp"
+       />
+   <TextView
+       android:id="@+id/number3"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:layout_height="wrap_content"
+       android:text="0"
+       android:gravity="center"
+       android:textSize="34sp"
+       />
+   <TextView
+       android:id="@+id/number4"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:layout_height="wrap_content"
+       android:text="0"
+       android:gravity="center"
+       android:textSize="34sp"
+       />
+
+   </LinearLayout>
+sss
+</LinearLayout>

@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal"
+      >
+        <TextView
+            android:id="@+id/home_station_name"
+            android:layout_width="wrap_content"
+            android:layout_height="73dp"
+            android:background="@drawable/line_kuang"
+            android:gravity="center"
+            android:text="101路      市区—火车站"
+            android:textColor="@color/colorWhite"
+            android:textSize="33sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutPrice"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="60dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:gravity="center"
+            android:id="@+id/Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ddd"
+            android:textColor="@color/colorWhite"
+            android:textSize="73sp" />
+
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="150dp"
+        android:id="@+id/home_station_time"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_height="73dp"
+        android:background="@drawable/kuang"
+        android:textColor="@color/colorWhite"
+        android:text="2017年8月26日 21 :19 : 19"
+        android:textSize="28sp"
+        />
+
+</LinearLayout>
