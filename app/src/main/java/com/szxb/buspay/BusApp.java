@@ -2,8 +2,6 @@ package com.szxb.buspay;
 
 import android.app.Application;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 
 import com.szxb.buspay.db.manager.DBCore;
@@ -11,10 +9,7 @@ import com.szxb.buspay.interfaces.IPosManage;
 import com.szxb.buspay.manager.PosManager;
 import com.szxb.buspay.task.TaskDelFile;
 import com.szxb.buspay.task.TaskPushBillService;
-import com.szxb.buspay.util.tip.BusToast;
-import com.szxb.buspay.util.crash.Cockroach;
 import com.szxb.buspay.util.sound.SoundPoolUtil;
-import com.szxb.jni.libszxb;
 import com.szxb.xblog.AndroidLogAdapter;
 import com.szxb.xblog.CsvFormatStrategy;
 import com.szxb.xblog.DiskLogAdapter;
@@ -36,7 +31,7 @@ import rx.subjects.Subject;
  * 作者: Tangren on 2017/7/17
  * 包名：com.szxb.buspay
  * 邮箱：996489865@qq.com
- * TODO:一句话描述
+ * TODO:一句话描述2017-09-27
  */
 
 public class BusApp extends Application {
