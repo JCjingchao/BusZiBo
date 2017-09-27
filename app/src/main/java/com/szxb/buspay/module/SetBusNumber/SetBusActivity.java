@@ -154,8 +154,8 @@ public class SetBusActivity extends BaseMVPActivity<SetBusView,SetBusPresenter> 
 
                 if (index==5){
                     String room=number1.getText().toString()+number2.getText().toString()+number3.getText().toString()
-                            +number4.getText().toString();
-                    CommonSharedPreferences.put("busNo","00"+room.trim());
+                            +number4.getText().toString() +number5.getText().toString() +number6.getText().toString();
+                    CommonSharedPreferences.put("busNo",room.trim());
                     BusToast.showToast(BusApp.getInstance(),"车号设置成功",true);
                     handler.sendMessage(handler.obtainMessage(Constant.Sgin));
                 }else{

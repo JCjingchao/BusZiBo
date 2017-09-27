@@ -116,7 +116,6 @@ public class FetchAppConfig {
 
 
     //票价
-
     public static String fixed_price(){
         return (String)CommonSharedPreferences.get("fixed_price","600");
     }
