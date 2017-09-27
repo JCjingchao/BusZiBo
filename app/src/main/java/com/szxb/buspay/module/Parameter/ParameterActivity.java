@@ -8,6 +8,7 @@ import com.szxb.buspay.base.BaseMVPActivity;
 import com.szxb.buspay.db.dao.OnLineInfoDao;
 import com.szxb.buspay.db.manager.DBCore;
 import com.szxb.buspay.db.sp.CommonSharedPreferences;
+import com.szxb.buspay.db.sp.FetchAppConfig;
 import com.szxb.buspay.entity.OnLineInfo;
 import com.szxb.buspay.interfaces.OnPushTask;
 import com.szxb.buspay.task.TaskHandler;
@@ -124,8 +125,13 @@ public class ParameterActivity extends BaseMVPActivity<ParameterView,ParameterPr
         CommonSharedPreferences.put("FristNo",position+"");
         CommonSharedPreferences.put("fixed_price",lineInfo.getFixed_price());
         CommonSharedPreferences.put("chinese_name",lineInfo.getChinese_name());
-        CommonSharedPreferences.put("LineName",lineInfo.getLine());
+
         CommonSharedPreferences.put("coefficient",lineInfo.getCoefficient());
+        int money=Integer.parseInt(lineInfo.getFixed_price());
+        BusApp.getPosManager().setPayMarPrice(money);
+        BusApp.getPosManager().setLineName(FetchAppConfig.LineName());
+        int coef=Integer.parseInt(FetchAppConfig.coefficient().substring(24,27));
+        BusApp.getPosManager().setMarkedPrice(money*coef/100);
         handler.sendMessage(handler.obtainMessage(Constant.SettingSuccess));
 
     }

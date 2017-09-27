@@ -54,6 +54,10 @@ public class HomePresenter extends BasePresenter<HomeView> {
             homeModel.UpdataConfig(Line);
             homeView.SetText(FetchAppConfig.LineName() + "        " + FetchAppConfig.chinese_name());
             int money = Integer.parseInt(FetchAppConfig.fixed_price());
+            BusApp.getPosManager().setPayMarPrice(money);
+            BusApp.getPosManager().setLineName(FetchAppConfig.LineName());
+            int coef=Integer.parseInt(FetchAppConfig.coefficient().substring(24,27));
+            BusApp.getPosManager().setMarkedPrice(money*coef/100);
             String coedd= FetchAppConfig.coefficient();
             Log.d("init",coedd+"---");
             int coeff=Integer.parseInt(coedd.substring(0,3));
