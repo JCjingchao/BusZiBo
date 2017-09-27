@@ -211,7 +211,7 @@ public class CardPay extends Thread {
                           }
 
                           if (cardRecord.getStatus().equals("F1")){
-                              soundPool.play(fiefaka, 1, 1, 0, 0, 1);
+                              soundPool.play(erro, 1, 1, 0, 0, 1);
                               onPushTask.task(Constant.CardPayMessage, cardRecord);
                           }
 
@@ -277,6 +277,8 @@ public class CardPay extends Thread {
 //    public static final String CARDT_FREE="04";
 //    public static final String CARDT_MEMORY="05";
 //    public static final String CARDT_DRIVER="06";
+
+
 //    public static final String CARDT_FAVOR1="05";
 //    public static final String CARDT_FAVOR2="07";
 //    public static final String CARDT_FAVOR3="08";
@@ -305,7 +307,7 @@ public class CardPay extends Thread {
 
 
             case CardType.CARDT_FREE:
-                soundPool.play(free, 1, 1, 0, 0, 1);
+                soundPool.play(rongjunka, 1, 1, 0, 0, 1);
                 break;
 
             case CardType.CARDT_MEMORY:

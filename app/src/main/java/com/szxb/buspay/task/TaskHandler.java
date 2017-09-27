@@ -73,6 +73,7 @@ public class TaskHandler extends Handler {
                     CardRecord cardRecord=(CardRecord) msg.obj;
                     if (cardRecord.getStatus().equals("00")) {
                         double mon=Integer.valueOf(cardRecord.getCardMoney(), 16) / 100.00;
+
                         DecimalFormat df= new DecimalFormat("######0.00");
                         df.format(mon);
                         BusToast.showToast(BusApp.getInstance(), "余额" + mon+ "元", true);

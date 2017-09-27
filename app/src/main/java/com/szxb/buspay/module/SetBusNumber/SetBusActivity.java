@@ -25,7 +25,7 @@ import java.util.List;
 public class SetBusActivity extends BaseMVPActivity<SetBusView,SetBusPresenter>  implements SetBusView,OnPushTask{
 
     private TaskHandler handler;
-    private TextView number1,number2,number3,number4;
+    private TextView number1,number2,number3,number4,number5,number6;
     private int index=0;
 
     @Override
@@ -41,18 +41,22 @@ public class SetBusActivity extends BaseMVPActivity<SetBusView,SetBusPresenter> 
         number2=(TextView)findViewById(R.id.number2);
         number3=(TextView)findViewById(R.id.number3);
         number4=(TextView)findViewById(R.id.number4);
+        number5=(TextView)findViewById(R.id.number5);
+        number6=(TextView)findViewById(R.id.number6);
         list=new ArrayList<>();
         list.add(0,number1);
         list.add(1,number2);
         list.add(2,number3);
         list.add(3,number4);
+        list.add(4,number5);
+        list.add(5,number6);
         list.get(index).setTextSize(46);
         list.get(index).setTextColor(getResources().getColor(R.color.colorWhite));
         String bus=FetchAppConfig.busNo();
         if (bus.length()==6){
             int i=0;
             for (TextView tv :list){
-                tv.setText(bus.substring(i+2,i+3));
+                tv.setText(bus.substring(i,i+1));
                 i++;
                 Log.d("SetBus",bus);
             }
@@ -125,7 +129,7 @@ public class SetBusActivity extends BaseMVPActivity<SetBusView,SetBusPresenter> 
             public void run() {
 
                 if (index==0){
-                    index=3;
+                    index=5;
                     list.get(0).setTextSize(34);
                     list.get(0).setTextColor(getResources().getColor(R.color.colorBlack));
                 }else{
@@ -148,7 +152,7 @@ public class SetBusActivity extends BaseMVPActivity<SetBusView,SetBusPresenter> 
             @Override
             public void run() {
 
-                if (index==3){
+                if (index==5){
                     String room=number1.getText().toString()+number2.getText().toString()+number3.getText().toString()
                             +number4.getText().toString();
                     CommonSharedPreferences.put("busNo","00"+room.trim());

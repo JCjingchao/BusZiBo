@@ -82,8 +82,6 @@ public class InitActivity extends BaseMVPActivity<InitView, InitPresenter> imple
         posScanInit = new PosScanInit();
         posScanInit.setOnCallBack(this);
         posScanInit.init(getApplicationContext());
-
-
         keyListenerTask=new KeyListenerTask();
         keyListenerTask.SetKeyLestener(this);
         keyListenerTask.start();

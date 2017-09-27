@@ -1,5 +1,6 @@
 package com.szxb.buspay.module.home;
 
+import android.content.Loader;
 import android.content.res.AssetManager;
 import android.util.Log;
 
@@ -16,6 +17,7 @@ import com.szxb.buspay.entity.ScanInfoEntity;
 import com.szxb.buspay.interfaces.OnPushTask;
 import com.szxb.buspay.task.CardPay;
 import com.szxb.buspay.task.KeyListenerTask;
+import com.szxb.buspay.task.LoadingData;
 import com.szxb.buspay.task.TimeTask;
 import com.szxb.jni.libszxb;
 import com.szxb.xblog.XBLog;
@@ -52,11 +54,13 @@ public class HomePresenter extends BasePresenter<HomeView> {
             homeModel.UpdataConfig(Line);
             homeView.SetText(FetchAppConfig.LineName() + "        " + FetchAppConfig.chinese_name());
             int money = Integer.parseInt(FetchAppConfig.fixed_price());
-            int coeff=Integer.parseInt(FetchAppConfig.coefficient().substring(0,3));
+            String coedd= FetchAppConfig.coefficient();
+            Log.d("init",coedd+"---");
+            int coeff=Integer.parseInt(coedd.substring(0,3));
             DecimalFormat df= new DecimalFormat("######0.00");
             double moneyf = money / 100.00*coeff/100;
-            df.format(moneyf);
-            homeView.SetPrice(moneyf + "");
+            String code=df.format(moneyf);
+            homeView.SetPrice(code + "");
             OnlineEvent(onPushTask);
             CardEvent(onPushTask);
             OnTime(onPushTask);
