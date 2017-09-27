@@ -52,6 +52,7 @@ public class HomeActivity extends BaseMVPActivity<HomeView, HomePresenter> imple
     }
 
 
+    //
     @Override
     protected void initView() {
         Line = (TextView) findViewById(R.id.home_station_name);

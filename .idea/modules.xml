@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BusZiBo.iml" filepath="$PROJECT_DIR$/BusZiBo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BusZiBo.iml" filepath="$PROJECT_DIR$/BusZiBo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xblog/xblog.iml" filepath="$PROJECT_DIR$/xblog/xblog.iml" />
       <module fileurl="file://$PROJECT_DIR$/xblog/xblog.iml" filepath="$PROJECT_DIR$/xblog/xblog.iml" />
       <module fileurl="file://$PROJECT_DIR$/xblog/xblog.iml" filepath="$PROJECT_DIR$/xblog/xblog.iml" />
     </modules>
