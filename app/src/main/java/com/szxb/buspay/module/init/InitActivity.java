@@ -1,23 +1,18 @@
 package com.szxb.buspay.module.init;
 
-import android.content.res.AssetManager;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.szxb.buspay.BusApp;
 import com.szxb.buspay.R;
 import com.szxb.buspay.base.BaseMVPActivity;
 import com.szxb.buspay.db.manager.DBCore;
-import com.szxb.buspay.db.sp.CommonSharedPreferences;
 import com.szxb.buspay.db.sp.FetchAppConfig;
 import com.szxb.buspay.entity.OnLineInfo;
 import com.szxb.buspay.interfaces.InitOnListener;
 import com.szxb.buspay.interfaces.OnPushTask;
 import com.szxb.buspay.task.KeyListenerTask;
 import com.szxb.buspay.task.TaskHandler;
-import com.szxb.buspay.util.tip.BusToast;
 import com.szxb.buspay.util.Constant;
-import com.szxb.jni.libszxb;
 import com.szxb.xblog.XBLog;
 import com.yanzhenjie.nohttp.Logger;
 
@@ -31,9 +26,6 @@ import java.util.List;
  */
 
 public class InitActivity extends BaseMVPActivity<InitView, InitPresenter> implements InitView, OnPushTask, InitOnListener {
-
-
-
 
     private TextView sgin,busno;
 
@@ -50,12 +42,10 @@ public class InitActivity extends BaseMVPActivity<InitView, InitPresenter> imple
         return new InitPresenter(this);
     }
 
-
     @Override
     protected int rootView() {
         return R.layout.activity_main;
     }
-
 
     @Override
     protected void initView() {

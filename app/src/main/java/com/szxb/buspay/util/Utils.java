@@ -4,19 +4,17 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.szxb.buspay.BusApp;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -41,11 +39,11 @@ public class Utils {
 
     }
 
-    public static byte[] MergeArray(byte[] byte1,byte[]... bytes){
-        byte[] Merage=byte1;
-        for (int i=0;i<bytes.length;i++) {
-            byte[] newInt = unitByteArray(Merage,bytes[i]);
-            Merage= newInt;
+    public static byte[] MergeArray(byte[] byte1, byte[]... bytes) {
+        byte[] Merage = byte1;
+        for (int i = 0; i < bytes.length; i++) {
+            byte[] newInt = unitByteArray(Merage, bytes[i]);
+            Merage = newInt;
         }
 
         return Merage;
@@ -53,7 +51,7 @@ public class Utils {
     }
 
     public static byte[] hexStringToByte(String hex) {
-        hex=hex.toUpperCase();
+        hex = hex.toUpperCase();
         int len = (hex.length() / 2);
         byte[] result = new byte[len];
         char[] achar = hex.toCharArray();
@@ -63,6 +61,7 @@ public class Utils {
         }
         return result;
     }
+
     private static byte toByte(char c) {
         byte b = (byte) "0123456789ABCDEF".indexOf(c);
         return b;
@@ -181,39 +180,37 @@ public class Utils {
 
     /**
      * 根据byte数组，生成文件
-     * @param bfile 文件数组
+     *
+     * @param bfile    文件数组
      * @param filePath 文件存放路径
      * @param fileName 文件名称
      */
-    public static void byte2File(byte[] bfile,String filePath,String fileName){
+    public static void byte2File(byte[] bfile, String filePath, String fileName) {
 
-        BufferedOutputStream bos=null;
-        FileOutputStream fos=null;
-        File file=null;
-        try{
-            File dir=new File(filePath);
-            if(!dir.exists() && !dir.isDirectory()){//判断文件目录是否存在
+        BufferedOutputStream bos = null;
+        FileOutputStream fos = null;
+        File file = null;
+        try {
+            File dir = new File(filePath);
+            if (!dir.exists() && !dir.isDirectory()) {//判断文件目录是否存在
                 dir.mkdirs();
             }
-            file=new File(filePath+fileName);
-            fos=new FileOutputStream(file);
-            bos=new BufferedOutputStream(fos);
+            file = new File(filePath + fileName);
+            fos = new FileOutputStream(file);
+            bos = new BufferedOutputStream(fos);
             bos.write(bfile);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
-        }
-        finally{
-            try{
-                if(bos != null){
+        } finally {
+            try {
+                if (bos != null) {
                     bos.close();
                 }
-                if(fos != null){
+                if (fos != null) {
                     fos.close();
                 }
-            }
-            catch(Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
             }
@@ -232,40 +229,33 @@ public class Utils {
     }
 
     //打开目录文件
-    public static byte[] File2byte(String filePath)
-    {
+    public static byte[] File2byte(String filePath) {
         byte[] buffer = null;
-        try
-        {
+        try {
 
             File file = new File(filePath);
             FileInputStream fis = new FileInputStream(file);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             byte[] b = new byte[1024];
             int n;
-            while ((n = fis.read(b)) != -1)
-            {
+            while ((n = fis.read(b)) != -1) {
                 bos.write(b, 0, n);
             }
             fis.close();
 
             bos.close();
             buffer = bos.toByteArray();
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return buffer;
     }
 
 
-    public static byte[] byteMerger(byte[] byte_1, byte[] byte_2){
-        byte[] byte_3 = new byte[byte_1.length+byte_2.length];
+    public static byte[] byteMerger(byte[] byte_1, byte[] byte_2) {
+        byte[] byte_3 = new byte[byte_1.length + byte_2.length];
         System.arraycopy(byte_1, 0, byte_3, 0, byte_1.length);
         System.arraycopy(byte_2, 0, byte_3, byte_1.length, byte_2.length);
         return byte_3;
@@ -274,7 +264,7 @@ public class Utils {
     public static byte[] int2Bytes(int value, int len) {
         byte[] b = new byte[len];
         for (int i = 0; i < len; i++) {
-            b[len - i - 1] = (byte)((value >> 8 * i) & 0xff);
+            b[len - i - 1] = (byte) ((value >> 8 * i) & 0xff);
         }
         return b;
     }
@@ -284,5 +274,11 @@ public class Utils {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
         String dateString = formatter.format(currentTime);
         return dateString;
+    }
+
+
+    public static String fen2Yuan(int prices) {
+        DecimalFormat format = new DecimalFormat("0.00");
+        return format.format((float) prices / (float) 100);
     }
 }

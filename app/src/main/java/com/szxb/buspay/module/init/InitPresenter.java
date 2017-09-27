@@ -3,9 +3,7 @@ package com.szxb.buspay.module.init;
 import android.content.res.AssetManager;
 import android.util.Log;
 
-import com.alibaba.fastjson.JSONObject;
 import com.szxb.buspay.BusApp;
-import com.szxb.buspay.base.BaseModel;
 import com.szxb.buspay.base.BasePresenter;
 import com.szxb.buspay.db.dao.LineEntityDao;
 import com.szxb.buspay.db.manager.DBCore;
@@ -14,10 +12,7 @@ import com.szxb.buspay.db.sp.FetchAppConfig;
 import com.szxb.buspay.entity.LineEntity;
 import com.szxb.buspay.interfaces.OnPushTask;
 import com.szxb.buspay.task.FTPDownLoad;
-import com.szxb.buspay.task.KeyListenerTask;
 import com.szxb.buspay.task.LoadingData;
-import com.szxb.buspay.task.ParameterAndBlackList;
-import com.szxb.buspay.util.Config;
 import com.szxb.buspay.util.Constant;
 import com.szxb.jni.libszxb;
 
@@ -56,10 +51,10 @@ public class InitPresenter extends BasePresenter<InitView> {
 
     //固件和K21
     void intit() {
-        if ("1".equals(FetchAppConfig.init())) {
+        if (!"2".equals(FetchAppConfig.init())) {
             AssetManager ass = BusApp.getInstance().getAssets();
-            libszxb.ymodemUpdate(ass, "Q6_K2120170924204720.bin");
-            CommonSharedPreferences.put("init", "1");
+            libszxb.ymodemUpdate(ass, "Q6_K21_170926102410.bin");
+            CommonSharedPreferences.put("init", "2");
         }
         SetK21Time();
     }

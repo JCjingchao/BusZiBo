@@ -38,14 +38,15 @@ public class FetchAppConfig {
         return (String) CommonSharedPreferences.get("endStationName", "未设置");
     }
 
-
-
+    //线路号
+    public static String lineName() {
+        return (String) CommonSharedPreferences.get("lineName", "未设置");
+    }
 
     //备注
     public static String orderDesc() {
-        return (String) CommonSharedPreferences.get("orderDesc", "扫码乘车");
+        return (String) CommonSharedPreferences.get("orderDesc", "淄博公交7");
     }
-
 
     //获取状态
     public static boolean saveState() {
@@ -83,19 +84,9 @@ public class FetchAppConfig {
         return (String) CommonSharedPreferences.get("LineName", "0302");
     }
 
-    //车牌号
-    public static String Plate() {
-        return (String) CommonSharedPreferences.get("Plate", "");
-    }
-
     //上次提交文件到服务器的时间，格式：yyyy-MM-dd HH:mm:ss
     public static String lastTimePushFile() {
         return (String) CommonSharedPreferences.get("lastTimePushFile", "");
-    }
-
-    //sn号
-    public static String snNo() {
-        return (String) CommonSharedPreferences.get("SnNo", "");
     }
 
     //参数版本号
@@ -117,7 +108,7 @@ public class FetchAppConfig {
 
     //票价
     public static String fixed_price(){
-        return (String)CommonSharedPreferences.get("fixed_price","600");
+        return (String)CommonSharedPreferences.get("fixed_price","1");
     }
 
     //折扣

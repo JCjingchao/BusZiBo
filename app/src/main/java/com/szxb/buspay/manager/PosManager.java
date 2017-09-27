@@ -12,6 +12,7 @@ import com.szxb.buspay.util.Config;
 import com.szxb.buspay.util.DateUtil;
 import com.szxb.buspay.util.Utils;
 
+
 /**
  * 作者: Tangren on 2017-09-08
  * 包名：szxb.com.commonbus.manager
@@ -33,19 +34,18 @@ public class PosManager implements IPosManage {
     //实际扣款金额
     private int paymarkedPrice;
     //城市编码
-    private String cityCode = "440100";
+//    private String cityCode = "371200";//莱芜
+    private String cityCode = "370300";//淄博
     //站点ID
     private int inStationId = 13;
     //备注
-    private String orderDesc;
-
+    private String orderDesc = "淄博公交";
     //key
     private byte[] key;
-
     //车牌号
     private String bus_no;
     //腾讯商户号
-    private String app_id;
+    private String app_id = "10000009";
 
     public PosManager() {
 
@@ -53,7 +53,7 @@ public class PosManager implements IPosManage {
 
     @Override
     public void loadFromPrefs() {
-        lineName = FetchAppConfig.LineName();
+        lineName = FetchAppConfig.lineName();
         startStationName = FetchAppConfig.startStationName();
         endStationName = FetchAppConfig.endStationName();
         driverNo = ModemToolTest.getItem(7);
@@ -62,7 +62,6 @@ public class PosManager implements IPosManage {
         orderDesc = FetchAppConfig.orderDesc();
         key = Base64.decode(Config.private_key, Base64.NO_WRAP);
         bus_no = FetchAppConfig.busNo();
-        app_id = FetchAppConfig.appId();
     }
 
     @Override
@@ -117,7 +116,7 @@ public class PosManager implements IPosManage {
     @Override
     public void setMarkedPrice(int var1) {
         this.markedPrice = var1;
-        CommonSharedPreferences.put("ticketPrice", var1);
+        CommonSharedPreferences.put("fixed_price", var1);
     }
 
     @Override
@@ -217,7 +216,6 @@ public class PosManager implements IPosManage {
     @Override
     public void setAppId(String app_id) {
         this.app_id = app_id;
-        CommonSharedPreferences.put("appId", app_id);
     }
 
     @Override

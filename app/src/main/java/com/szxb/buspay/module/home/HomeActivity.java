@@ -1,29 +1,21 @@
 package com.szxb.buspay.module.home;
 
-import android.content.Intent;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.szxb.buspay.BusApp;
 import com.szxb.buspay.R;
 import com.szxb.buspay.base.BaseMVPActivity;
-import com.szxb.buspay.db.sp.CommonSharedPreferences;
-import com.szxb.buspay.db.sp.FetchAppConfig;
 import com.szxb.buspay.entity.QRCode;
 import com.szxb.buspay.entity.QRScanMessage;
 import com.szxb.buspay.interfaces.OnPushTask;
-import com.szxb.buspay.manager.report.TenPosReportManager;
 import com.szxb.buspay.task.TaskHandler;
-import com.szxb.buspay.task.ThreadScheduledExecutorUtil;
-import com.szxb.buspay.task.scan.LoopScanTask;
-import com.szxb.buspay.task.settle.TimeSettleTask;
 import com.szxb.buspay.util.Config;
 import com.szxb.buspay.util.Constant;
 import com.szxb.buspay.util.ParamsUtil;
 import com.szxb.buspay.util.rx.RxBus;
 import com.szxb.buspay.util.sound.SoundPoolUtil;
 import com.szxb.buspay.util.tip.BusToast;
-import com.szxb.jni.libszxb;
 import com.szxb.xblog.XBLog;
 
 import java.util.Map;
@@ -43,8 +35,6 @@ public class HomeActivity extends BaseMVPActivity<HomeView, HomePresenter> imple
     private TaskHandler handler;
     private TextView time, Line;
     private Subscription sub;
-    private Intent loopScanTaskIntent;
-    private Intent timeSettleTaskIntent;
 
     @Override
     protected int rootView() {
@@ -73,10 +63,6 @@ public class HomeActivity extends BaseMVPActivity<HomeView, HomePresenter> imple
     protected void initData() {
         XBLog.d("Start");
         mPresenter.init(this);
-        loopScanTaskIntent = new Intent(this, LoopScanTask.class);
-        timeSettleTaskIntent = new Intent(this, TimeSettleTask.class);
-        startService(loopScanTaskIntent);
-        startService(timeSettleTaskIntent);
         receiverNews();
     }
 
@@ -272,9 +258,6 @@ public class HomeActivity extends BaseMVPActivity<HomeView, HomePresenter> imple
             sub.unsubscribe();
         }
         SoundPoolUtil.release();
-        ThreadScheduledExecutorUtil.shutdown();
-        stopService(loopScanTaskIntent);
-        stopService(timeSettleTaskIntent);
     }
 
     @Override

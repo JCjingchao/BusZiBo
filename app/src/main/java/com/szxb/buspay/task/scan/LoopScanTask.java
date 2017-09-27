@@ -8,8 +8,6 @@ import android.text.TextUtils;
 
 import com.szxb.buspay.entity.QRCode;
 import com.szxb.buspay.entity.QRScanMessage;
-import com.szxb.buspay.interfaces.IPosManage;
-import com.szxb.buspay.manager.PosManager;
 import com.szxb.buspay.manager.report.PosScanManager;
 import com.szxb.buspay.task.ThreadScheduledExecutorUtil;
 import com.szxb.buspay.util.rx.RxBus;
@@ -34,14 +32,10 @@ public class LoopScanTask extends Service {
 
     //临时变量存储上次刷卡记录,为了防止重复刷卡
     private String tem = "0";
-    private static PosManager manager;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
-        manager = new PosManager();
-        manager.loadFromPrefs();
 
         ThreadScheduledExecutorUtil.getInstance().getService().scheduleAtFixedRate(new Runnable() {
             @Override
@@ -71,10 +65,5 @@ public class LoopScanTask extends Service {
             }
         }, 500, 200, TimeUnit.MILLISECONDS);
     }
-
-    public static IPosManage getPosManager() {
-        return manager;
-    }
-
 
 }

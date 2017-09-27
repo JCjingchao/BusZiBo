@@ -9,6 +9,8 @@ import com.szxb.buspay.interfaces.IPosManage;
 import com.szxb.buspay.manager.PosManager;
 import com.szxb.buspay.task.TaskDelFile;
 import com.szxb.buspay.task.TaskPushBillService;
+import com.szxb.buspay.task.scan.LoopScanTask;
+import com.szxb.buspay.task.settle.TimeSettleTask;
 import com.szxb.buspay.util.sound.SoundPoolUtil;
 import com.szxb.xblog.AndroidLogAdapter;
 import com.szxb.xblog.CsvFormatStrategy;
@@ -35,7 +37,8 @@ import rx.subjects.Subject;
  */
 
 public class BusApp extends Application {
-
+    private Intent loopScanTaskIntent;
+    private Intent timeSettleTaskIntent;
     private static PosManager manager;
     private static volatile BusApp instance = null;
     private Subject<Object, Object> RxBus = new SerializedSubject<>(PublishSubject.create());
@@ -63,9 +66,14 @@ public class BusApp extends Application {
         initLog(false);
         //文件过期处理,也可不在application中
         TaskDelFile.del(this, "bus");
-        TaskPushBillService taskPushBillService = new TaskPushBillService();
         Intent intent = new Intent(BusApp.getInstance(), TaskPushBillService.class);
         startService(intent);
+
+        //启动扫码、后台扣款任务
+        loopScanTaskIntent = new Intent(this, LoopScanTask.class);
+        timeSettleTaskIntent = new Intent(this, TimeSettleTask.class);
+        startService(loopScanTaskIntent);
+        startService(timeSettleTaskIntent);
 //        Cockroach.install(new Cockroach.ExceptionHandler() {
 //            @Override
 //            public void handlerException(final Thread thread, final Throwable throwable) {
@@ -83,7 +91,7 @@ public class BusApp extends Application {
 //                });
 //            }
 //        });
-        Log.d("Strat","5");
+        Log.d("Strat", "5");
     }
 
     private void initLog(boolean saveLog) {
@@ -103,7 +111,6 @@ public class BusApp extends Application {
             XBLog.addLogAdapter(new DiskLogAdapter(formatStrategy));
         }
     }
-
 
 
     public static BusApp getInstance() {
